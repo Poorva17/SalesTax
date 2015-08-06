@@ -5,11 +5,13 @@ public class SalesTax {
     View view;
     Input input;
     Parser parser;
+    Item item;
 
-    public SalesTax(View view, Input input, Parser parser) {
+    public SalesTax(View view, Input input, Parser parser, Item item) {
         this.view = view;
         this.input = input;
         this.parser = parser;
+        this.item = item;
     }
 
     public void start() {
@@ -19,7 +21,10 @@ public class SalesTax {
             String inputItem = input.acceptInput();
             if (inputItem.equalsIgnoreCase("quit"))
                 break;
-            view.printMessage(parser.parseInput(inputItem).toString());
+
+            this.item = (parser.parseInput(inputItem));
+            item.calculateTax();
+            view.printMessage(item.toString());
             view.printMessage("\nEnter Next Item:\n");
         }
     }

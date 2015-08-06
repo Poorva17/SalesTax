@@ -8,7 +8,8 @@ public class EntryPoint {
         View view = new View();
         Input input = new Input(new BufferedReader(new InputStreamReader(System.in)));
         Parser parser = new Parser();
-        SalesTax salesTax = new SalesTax(view, input, parser);
+        Item item = new Item(0, "", 0.0);
+        SalesTax salesTax = new SalesTax(view, input, parser, item);
         salesTax.start();
     }
 }
